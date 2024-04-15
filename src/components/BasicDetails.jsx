@@ -1,15 +1,22 @@
 import {
     TextField,
-    Grid
+    Grid,
+    Typography
 } from '@mui/material';
 
-const PersonalInfo = (props) => {
+const BasicDetails = (props) => {
     const { formik } = props;
     return (
         <Grid
             container
             spacing={2}
         >
+            <Grid
+                item
+                xs={12}
+            >
+                <Typography variant='h5' sx={{background: '#2196f3',  borderRadius: '10px', padding: 1, color: 'white'}}>Basic Details</Typography>
+            </Grid>
             <Grid
                 item
                 xs={6}
@@ -64,19 +71,19 @@ const PersonalInfo = (props) => {
                 xs={12}
             >
                 <TextField
-                    name="residence"
-                    label="Residence"
+                    name="email"
+                    label="Email"
                     variant="outlined"
-                    size="small"
+                    type="email"
                     fullWidth
-                    value={formik.values.residence}
+                    size="small"
+                    error={Boolean(formik.touched.email && formik.errors.email)}
                     onChange={formik.handleChange}
-                    error={formik.touched.residence && Boolean(formik.errors.residence)}
-                    helperText={formik.touched.residence && formik.errors.residence}
+                    value={formik.values.email}
                 />
             </Grid>
         </Grid>
     )
 }
 
-export default PersonalInfo
+export default BasicDetails
